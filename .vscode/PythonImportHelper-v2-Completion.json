@@ -34,6 +34,30 @@
         "documentation": {}
     },
     {
+        "label": "Console",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "JustifyMethod",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "rich.table",
+        "description": "rich.table",
+        "isExtraImport": true,
+        "detail": "rich.table",
+        "documentation": {}
+    },
+    {
         "label": "Table",
         "importPath": "rich.table",
         "description": "rich.table",
@@ -46,7 +70,7 @@
         "kind": 2,
         "importPath": "manager",
         "description": "manager",
-        "peekOfCode": "def clear_screen():\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example\n        env_file = \".env\" if os.path.exists(\".env\") else \".env.example\"\n        # If neither file exists, return an empty list",
+        "peekOfCode": "def clear_screen():\n    \"\"\"\n    Clears the screen by executing the 'cls' command on Windows or 'clear' command on Unix-based systems.\n    \"\"\"\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    \"\"\"\n    Loads the contents of a .env file and returns a list of valid environment variable entries.\n    If the .env file does not exist, it falls back to .env.example.",
         "detail": "manager",
         "documentation": {}
     },
@@ -55,7 +79,34 @@
         "kind": 2,
         "importPath": "manager",
         "description": "manager",
-        "peekOfCode": "def load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example\n        env_file = \".env\" if os.path.exists(\".env\") else \".env.example\"\n        # If neither file exists, return an empty list\n        if not os.path.exists(env_file):\n            return []\n        # Open and read the determined file",
+        "peekOfCode": "def load_env_file():\n    \"\"\"\n    Loads the contents of a .env file and returns a list of valid environment variable entries.\n    If the .env file does not exist, it falls back to .env.example.\n    Skips lines that are empty or start with specific characters (spaces, comments, newlines, tabs).\n    Handles exceptions and prints error messages using Rich Console.\n    \"\"\"\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "save_env_file",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def save_env_file(lines):\n    \"\"\"\n    Saves the contents of the .env file and creates a backup if the file already exists.\n    Handles exceptions and prints error messages using Rich Console.\n    \"\"\"\n    try:\n        # First, let's create a backup of the existing .env file if it exists\n        if os.path.exists(\".env\"):\n            # Read the current contents of .env before we overwrite it\n            with open(\".env\", \"r\") as current_file:",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "clear_screen",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def clear_screen():\n    \"\"\"\n    Clears the screen by executing the 'cls' command on Windows or 'clear' command on Unix-based systems.\n    \"\"\"\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    \"\"\"\n    Loads the contents of a .env file and returns a list of valid environment variable entries.\n    If the .env file does not exist, it falls back to .env.example.",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "load_env_file",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def load_env_file():\n    \"\"\"\n    Loads the contents of a .env file and returns a list of valid environment variable entries.\n    If the .env file does not exist, it falls back to .env.example.\n    Skips lines that are empty or start with specific characters (spaces, comments, newlines, tabs).\n    Handles exceptions and prints error messages using Rich Console.\n    \"\"\"\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:",
         "detail": "manager",
         "documentation": {}
     },
@@ -91,7 +142,16 @@
         "kind": 5,
         "importPath": "manager",
         "description": "manager",
-        "peekOfCode": "console = Console()\n# Function to clear the screen\ndef clear_screen():\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example",
+        "peekOfCode": "console = Console()\n# Function to clear the screen\ndef clear_screen():\n    \"\"\"\n    Clears the screen by executing the 'cls' command on Windows or 'clear' command on Unix-based systems.\n    \"\"\"\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    \"\"\"",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "console",
+        "kind": 5,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "console = Console()\n# Function to clear the screen\ndef clear_screen():\n    \"\"\"\n    Clears the screen by executing the 'cls' command on Windows or 'clear' command on Unix-based systems.\n    \"\"\"\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    \"\"\"",
         "detail": "manager",
         "documentation": {}
     }
