@@ -1,103 +1,5 @@
-# =================================================== #
-# Env. Variables Manager/Launcher                     #
-# --------------------------------------------------- #
-# Filename: manager.py                                #
-# --------------------------------------------------- #
-# Author: Frederick Pellerin <fredp3d@proton.me>      #
-# Github: https://github.com/TheRealFREDP3D/          #
-# Twitter/X: https://x.com/TheRealFredP3D/            #
-# --------------------------------------------------- #
-# Modified: 30-12-2024                                #
-# =================================================== #
-
-import os
-import rich
-from rich.console import Console
-from rich.table import Table
-from rich.console import JustifyMethod
-
-# Initialize Rich Console for pretty printing
-console = Console()
-
-# Function to clear the screen
-def clear_screen():
-    """
-    Clears the screen by executing the 'cls' command on Windows or 'clear' command on Unix-based systems.
-    """
-    os.system("cls" if os.name == "nt" else "clear")
-
-# Function to load .env file content
-def load_env_file():
-    """
-    Loads the contents of a .env file and returns a list of valid environment variable entries.
-    If the .env file does not exist, it falls back to .env.example.
-    Skips lines that are empty or start with specific characters (spaces, comments, newlines, tabs).
-    Handles exceptions and prints error messages using Rich Console.
-    """
-    # List of characters that indicate a line should be skipped if it starts with them
-    skip_characters = [" ", "#", "\n", "\t"]
-    
-    try:
-        # Determine which env file to use - prefer .env, fall back to .env.example
-        env_file = ".env" if os.path.exists(".env") else ".env.example"
-
-        # If neither file exists, return an empty list
-        if not os.path.exists(env_file):
-            return []
-
-        # Open and read the determined file
-        with open(env_file, "r") as file:
-            # Process each line, keeping only valid environment variable entries
-            valid_lines = []
-            for line in file.readlines():
-                # Skip empty lines
-                if not line.strip():
-                    continue
-                    
-                # Skip lines that start with any character from skip_characters
-                if any(line.startswith(char) for char in skip_characters):
-                    continue
-                    
-                # If we get here, the line is valid - add it to our list
-                valid_lines.append(line.strip())
-                
-            return valid_lines
-            
-    except Exception as e:
-        console.print(f"[bold red]Error loading {env_file} file: {e}[/bold red]")
-        return []
-
-# Function to save .env file content
-def save_env_file(lines):
-    """
-    Saves the contents of the .env file and creates a backup if the file already exists.
-    Handles exceptions and prints error messages using Rich Console.
-    """
-    try:
-        # First, let's create a backup of the existing .env file if it exists
-        if os.path.exists(".env"):
-            # Read the current contents of .env before we overwrite it
-            with open(".env", "r") as current_file:
-                current_contents = current_file.read()
-            
-            # Save the current contents to .env.bak
-            with open(".env.bak", "w") as backup_file:
-                backup_file.write(current_contents)
-
-        # Now we can safely write the new contents to .env
-        with open(".env", "w") as file:
-            for line in lines:
-                file.write(line + "\n")
-                
-        # If we get here, everything worked successfully
-        console.print("[bold green]Environment file saved successfully with backup.[/bold green]")
-        
-    except PermissionError:
-        console.print("[bold red]Error: No permission to write to .env or .env.bak file[/bold red]")
-    except IOError as e:
-        console.print(f"[bold red]Error: Failed to write to environment files: {e}[/bold red]")
 # ==================================================+ #
-# George_Was_Right - Env. Variables Manager/Launcher  #
+# Env. Variables Manager/Launcher                     #
 # --------------------------------------------------- #
 # Filename: start.py                                  #
 # --------------------------------------------------- #
@@ -105,7 +7,7 @@ def save_env_file(lines):
 # Github: https://github.com/TheRealFREDP3D/          #
 # Twitter/X: https://x.com/TheRealFredP3D/            #
 # --------------------------------------------------- #
-# Modified: <date>                                    #
+# Modified: 30-12-2024                                    #
 # =================================================== #
 
 import os
