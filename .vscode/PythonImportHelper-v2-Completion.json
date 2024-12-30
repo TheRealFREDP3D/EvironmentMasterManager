@@ -1,0 +1,98 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "rich",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "rich",
+        "description": "rich",
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
+        "label": "Console",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "JustifyMethod",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "rich.table",
+        "description": "rich.table",
+        "isExtraImport": true,
+        "detail": "rich.table",
+        "documentation": {}
+    },
+    {
+        "label": "clear_screen",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def clear_screen():\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example\n        env_file = \".env\" if os.path.exists(\".env\") else \".env.example\"\n        # If neither file exists, return an empty list",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "load_env_file",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example\n        env_file = \".env\" if os.path.exists(\".env\") else \".env.example\"\n        # If neither file exists, return an empty list\n        if not os.path.exists(env_file):\n            return []\n        # Open and read the determined file",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "save_env_file",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def save_env_file(lines):\n    try:\n        # First, let's create a backup of the existing .env file if it exists\n        if os.path.exists(\".env\"):\n            # Read the current contents of .env before we overwrite it\n            with open(\".env\", \"r\") as current_file:\n                current_contents = current_file.read()\n            # Save the current contents to .env.bak\n            with open(\".env.bak\", \"w\") as backup_file:\n                backup_file.write(current_contents)",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "show_feedback",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def show_feedback(message):\n    console.print(f\"[bold green]{message}[/bold green]\")\n# Main function to create and run the TUI\ndef main():\n    env_lines = load_env_file()\n    show_message = None  # Add a variable to store feedback messages\n    while True:\n        clear_screen()\n        console.print(\"[bold blue]     [.env] MasterManager[/bold blue]\")\n        console.print(\"=\" * 30)",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "def main():\n    env_lines = load_env_file()\n    show_message = None  # Add a variable to store feedback messages\n    while True:\n        clear_screen()\n        console.print(\"[bold blue]     [.env] MasterManager[/bold blue]\")\n        console.print(\"=\" * 30)\n        # Display the table as before\n        table = Table(\n            title=\"\",",
+        "detail": "manager",
+        "documentation": {}
+    },
+    {
+        "label": "console",
+        "kind": 5,
+        "importPath": "manager",
+        "description": "manager",
+        "peekOfCode": "console = Console()\n# Function to clear the screen\ndef clear_screen():\n    os.system(\"cls\" if os.name == \"nt\" else \"clear\")\n# Function to load .env file content\ndef load_env_file():\n    # List of characters that indicate a line should be skipped if it starts with them\n    skip_characters = [\" \", \"#\", \"\\n\", \"\\t\"]\n    try:\n        # Determine which env file to use - prefer .env, fall back to .env.example",
+        "detail": "manager",
+        "documentation": {}
+    }
+]
